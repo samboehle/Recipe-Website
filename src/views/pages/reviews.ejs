@@ -1,0 +1,38 @@
+<%- include('../partials/header'); -%>
+<body>
+    <main>
+      <div class="" style="background-color: #0f415c;">
+        <div class="container-fluid" style="padding: 2%; ">
+          <form class="" action="/get_feed" method="post">
+            <div class="row">
+              <div class="col-3">
+                <div class="row">
+                  <a class="nav-link" href="/" style="color:aliceblue">Home</a>
+                  <a class="nav-link" href="/reviews" style="color: aliceblue;">Reviews</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="container-fluid" style="padding: 1%; ">
+        <form class="" action="/search" method="post">
+          <div class="row justify-content-center">
+            <div class="col-5 text-center">
+              <input class="form-control" type="text" name="title" placeholder="Enter Movie Title">
+            </div>
+            <div class="col-1">
+              <input class="btn btn-primary" type="submit" name="Submit" value = "Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="container-lg" style="margin-top: 2%;">
+        <%- include('../partials/reviews', {data: data}); %>
+      </div>
+
+  
+    </main>
+  <%- include('../partials/footer'); -%>

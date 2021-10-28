@@ -1,0 +1,40 @@
+<!--
+  TODO: Update the EJS code to insert the following information:
+    - display_title
+    - url
+    - suggested_link_text
+    - publication_date
+    - summary_short
+
+  HINT: Not sure how to display the reviews, check out Bootstrap cards here: https://getbootstrap.com/docs/4.0/components/card/
+-->
+<%
+  if (data) {
+
+    var cards = `
+        <table class="table">
+            <thead>
+                <th scope="col">Movie</th>
+                <th scope="col">Review</th>
+                <th scope="col">Review Date</th>
+            </thead>
+        <tbody>`;
+           
+    
+    for(var i = 0; i < data.length; i++)
+    {
+            cards +="<tr>";
+            cards += `
+                <td>`+data[i].tv_show+`</td>
+                <td>`+data[i].review+`</td>
+                <td>`+data[i].review_date+`</td>`;
+            cards +="</tr>";
+    }
+
+
+    
+    cards +='</tbody></table>';
+
+%>
+    <%- cards %>
+<% } %>

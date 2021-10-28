@@ -1,0 +1,99 @@
+<!--
+  TODO: Update the EJS code to insert the following information:
+    - display_title
+    - url
+    - suggested_link_text
+    - publication_date
+    - summary_short
+
+  HINT: Not sure how to display the reviews, check out Bootstrap cards here: https://getbootstrap.com/docs/4.0/components/card/
+-->
+<%
+  if (items) {
+  var instructions = items.strInstructions;
+  var tags = items.strTags;
+  var source = items.strSource;
+  var youtube = items.strYoutube;
+  
+  if(instructions== null)
+  {
+    instructions = "-";
+  }
+  if(tags == null)
+  {
+    tags = "-";
+  }
+
+  var source_placeholder = "Source";
+  if(source == null)
+  {
+    source == "";
+    source_placeholder = "-";
+  }
+
+  var youtube_placeholder = "YouTube"
+  if(youtube == null)
+  {
+    youtube == "";
+    youtube_placeholder = "-";
+  }
+	var cards = '<div class="container">';
+  cards += '<div class="row"><div class="col-4"> <img src="'+items.strMealThumb+'" alt="'+items.strMeal+'" style="width:300px;height: auto;"></div>';
+  cards += '<div class="col-8"> <h1>'+items.strMeal +'</h1>';
+  cards += '<h3 style="font-weight: bold;">Instructions:</h3> <p>'+instructions+'</p>';
+  cards += '<h3 style="font-weight: bold;">Tags</h3> <p>'+tags+'</p>';
+  cards += '<div class="row"><a href="'+source+'" class="btn btn-primary"> '+source_placeholder+'</a><a href="'+items.strYoutube+'" class="btn btn-primary" style="margin-left:20px;">YouTube</a> </div>';
+  cards += `<div class="text-center">
+		<a href="#myModal" class="btn btn-primary" data-toggle="modal">Add Review</a>
+	</div>
+
+	<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Review</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+ 
+            <form class="" action="/get_feed/review" method="post">
+              <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Title of Movie:</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" placeholder="`+items.strMeal+`" readonly id="name" id="name" name="name">
+                  <input type="hidden" value="`+items.strMeal+`" id="hidden_name" name="hidden_name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="reviewText" style="padding-left: 15px;">Enter your review here:</label>
+                <div class="col-sm-6">
+                  <textarea class="form-control" id="reviewText" name="reviewText" rows="4"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <button id="submitReview" class="btn btn-primary" style="margin-left:15px;">Submit</button>
+            </form>
+ 
+        </div>
+
+      </div>
+    </div>
+
+
+			
+	</div>`;
+
+
+
+  
+  cards += '</div></div> </div>';
+
+    
+
+
+%>
+    <%- cards %>
+<% } %>
