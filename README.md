@@ -8,8 +8,6 @@
 </div>
 
 
-## Description
-Heroku Node+Postgres with Docker Example for CU Boulder CSCI 3308 Spring 2021 Lab 10
 
 
 ## How to run
